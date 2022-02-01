@@ -1,0 +1,14 @@
+[Unit]
+Description=MQA scoring API for EDP
+After=network.target
+
+[Service]
+User=administrator
+Group=administrator
+Restart=always
+WorkingDirectory=/home/administrator/mqa-scoring-api
+Environment="PATH=/home/administrator/mqa-scoring-api/mqavenv/bin"
+ExecStart=/home/administrator/mqa-scoring-api/mqavenv/bin/gunicorn -c /home/administrator/mqa-scoring-api/gunicorn_config.py -b 127.0.0.1:4040 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

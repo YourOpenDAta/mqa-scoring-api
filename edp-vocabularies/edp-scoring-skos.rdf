@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+    <skos:ConceptScheme rdf:about="https://piveau.eu/ns/scoring#scoring">
+        <rdfs:label>Scoring</rdfs:label>
+        <skos:prefLabel xml:lang="en">Scoring</skos:prefLabel>
+    </skos:ConceptScheme>
+
+    <skos:Concept rdf:about="https://piveau.eu/ns/scoring#excellent">
+        <skos:inScheme rdf:resource="https://piveau.eu/ns/scoring#scoring" />
+        <dc:description xml:lang="en">A scoring value greater than 350.</dc:description>
+        <dc:identifier>EXCELLENT</dc:identifier>
+        <skos:prefLabel xml:lang="en">Excellent</skos:prefLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://piveau.eu/ns/scoring#good">
+        <skos:inScheme rdf:resource="https://piveau.eu/ns/scoring#scoring" />
+        <dc:description xml:lang="en">A scoring value between 221 and 350.</dc:description>
+        <dc:identifier>GOOD</dc:identifier>
+        <skos:prefLabel xml:lang="en">Good</skos:prefLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://piveau.eu/ns/scoring#enough">
+        <skos:inScheme rdf:resource="https://piveau.eu/ns/scoring#scoring" />
+        <dc:description xml:lang="en">A scoring value between 120 and 220.</dc:description>
+        <dc:identifier>ENOUGH</dc:identifier>
+        <skos:prefLabel xml:lang="en">Enough</skos:prefLabel>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://piveau.eu/ns/scoring#bad">
+        <skos:inScheme rdf:resource="https://piveau.eu/ns/scoring#scoring" />
+        <dc:description xml:lang="en">A scoring value less than 120.</dc:description>
+        <dc:identifier>BAD</dc:identifier>
+        <skos:prefLabel xml:lang="en">Bad</skos:prefLabel>
+    </skos:Concept>
+
+</rdf:RDF>
