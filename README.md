@@ -43,7 +43,7 @@ The `score` key correspond to the overall scoring of the dataset according to th
 
 The `rate` key correspond to the MQA rating category according to score obtained.
 
-```
+```json
 {
     "summary": {
         "rate": "Bad",
