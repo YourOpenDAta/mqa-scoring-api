@@ -7,7 +7,7 @@ Developer: Johnny Choque (jchoque@tlmat.unican.es)
 
 import requests
 from flask import abort
-from rdflib import Graph
+from rdflib import Graph, URIRef
 import os
 import json
 
@@ -136,7 +136,7 @@ def format(urls):
     report = report + '. The property is machine-readable. Additional weight assigned 20'
     weight = weight + 20
   else:
-    report = report + 'The property is not machine-readable. No additional weight assigned'
+    report = report + '. The property is not machine-readable. No additional weight assigned'
   if non_prop_checked:
     report = report + '. The property is non-propietary. Weight assigned 20'
     weight = weight + 20
@@ -193,11 +193,14 @@ def publisher():
   return {'report': report, 'weight': weight}
 
 def accessrights(urls):
+  uri = URIRef('')
   checked = True
   weight = 10
   report = 'The property is set. Weight assigned 10'
   for url in urls:
     g = Graph()
+    if type(url) != type(uri):
+      continue
     g.parse(url, format="application/rdf+xml")
     if (url, None, None) in g:
       checked = checked and True

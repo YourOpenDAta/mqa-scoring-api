@@ -98,9 +98,6 @@ def mqavalues():
   others['values'] = []
   others['weight'] = 0
 
-  mqa_values['format'] = {'result': False, 'weight': 0, 'report': 'The property is not set'}
-  mqa_values['mediatype'] = {'result': False, 'weight': 0, 'report': 'The property is not set'}
-
   for pred in metrics.keys():
     met = str_metric(pred, g)
     objs = metrics[pred]
@@ -134,13 +131,15 @@ def mqavalues():
       mqa_values['modified'] = mqa.modified()
     elif met == "dct:rights":
       mqa_values['rights'] = mqa.rights()
-    elif met == "dct:byteSize":
+    elif met == "dcat:byteSize":
       mqa_values['bytesize'] = mqa.byteSize()
     else:
       others['values'].append(otherCases(pred, objs, g))
 
   mqa_values['others'] = others
-  mqa_values['format_mediatype'] = mqa.format_mediatype(mqa_values['format']['result'], mqa_values['mediatype']['result'])
+
+  if ('format' in mqa_values) and ('mediatype' in mqa_values):
+    mqa_values['format_mediatype'] = mqa.format_mediatype(mqa_values['format']['result'], mqa_values['mediatype']['result'])
 
   result = {}
   result['values'] = mqa_values
