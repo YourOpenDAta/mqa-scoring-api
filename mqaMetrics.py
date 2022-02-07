@@ -195,22 +195,27 @@ def publisher():
 def accessrights(urls):
   uri = URIRef('')
   checked = True
+  isURL = True
   weight = 10
   report = 'The property is set. Weight assigned 10'
   for url in urls:
     g = Graph()
     if type(url) != type(uri):
+      isURL = False
       continue
     g.parse(url, format="application/rdf+xml")
     if (url, None, None) in g:
       checked = checked and True
     else:
       checked = checked and False
-  if checked:
-    weight = weight + 5
-    report = report + 'The property uses a controlled vocabulary. Additional weight assigned 5'
+  if isURL:
+    if checked:
+      weight = weight + 5
+      report = report + '. The property uses a controlled vocabulary. Additional weight assigned 5'
+    else:
+      report = report + '. The license is incorrect-' + str(url) + '. No additional weight assigned'
   else:
-    report = report + 'The license is incorrect-' + str(url) + '. No additional weight assigned'
+    report = report + '. The property does not use a valid URL. No additional weight assigned'
   return {'report': report, 'weight': weight}
 
 def issued():
