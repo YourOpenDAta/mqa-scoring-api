@@ -161,9 +161,9 @@ def license(urls):
       checked = checked and False
   if checked:
     weight = weight + 10
-    report = report + 'The property provides the correct license information. Additional weight assigned 10'
+    report = report + '. The property provides the correct license information. Additional weight assigned 10'
   else:
-    report = report + 'The license is incorrect-' + str(url) + '. No additional weight assigned'
+    report = report + '. The license is incorrect-' + str(url) + '. No additional weight assigned'
   return {'report': report, 'weight': weight}
 
 def contactpoint():
